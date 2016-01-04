@@ -1,0 +1,36 @@
+<?xml version='1.0'?>
+<mavlink>
+    <include>common.xml</include>
+    <messages>
+          <message id="220" name="PRESSUREWING_SYS">
+               <description>I2C sensor addresses for pressure wing.</description>
+               <field type="uint8_t[20]" name="address_left">I2C sensor addresses</field>
+               <field type="uint8_t[20]" name="address_right">I2C sensor addresses</field>
+          </message>
+          <message id="221" name="PRESSUREWING_DIGITAL">
+               <description>Digital pressure measurements.</description>
+               <field type="uint16_t[20]" name="digital_pressure_left">Left wing digital pressure</field>
+               <field type="uint16_t[20]" name="digital_pressure_right">Right wing digital pressure</field>
+          </message>
+          <message id="222" name="PRESSUREWING_PASCAL">
+               <description>Pressure measurements converted to Pascals.</description>
+               <field type="float[20]" name="pascal_pressure_left">Left wing pressure converted to Pa</field>
+               <field type="float[20]" name="pascal_pressure_right">Right wing pressure converted to Pa</field>
+          </message>
+          <message id="223" name="PRESSUREWING_LIFT">
+               <description>This messages contains the local lift, and whole wing lift estimates.</description>
+               <field type="float[10]" name="local_lift_left">Local lifts from planar pressure approximation, left wing</field>
+               <field type="float[10]" name="local_lift_right">Local lifts from planar pressure approximation, right wing</field>
+               <field type="float" name="estim_lift_left">Estimated lift of entire Left wing, derived from local lifts</field>
+               <field type="float" name="estim_lift_right">Estimated lift of entire Right wing, derived from local lifts</field>
+          </message>
+          <message id="224" name="PRESSUREWING_WING_DATA">
+               <description>This messages contains all the pressure measurements and derived states of the wing.</description>
+               <field type="uint8_t" name="wing">Side of wing (0 for left, 1 for right)</field>
+               <field type="uint16_t[20]" name="pressure_digital">14 bit digital pressure</field>
+               <field type="float[20]" name="pressure_pascal">Pressure measured in Pa</field>
+               <field type="float[10]" name="local_lift">Local lifts from planar pressure approximation</field>
+               <field type="float" name="estim_lift">Estimated lift of entire wing, derived from local lifts</field>
+          </message>
+    </messages>
+</mavlink>
